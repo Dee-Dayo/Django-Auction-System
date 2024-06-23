@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Item
+from .models import Item, Bid
 from .models import User
 
 
@@ -16,7 +16,6 @@ class Bid(admin.ModelAdmin):
                     'start_date', 'end_date']
 
 
-@admin.register(Bid)
-class Bid(admin.ModelAdmin):
-    list_display = ['id', 'item_name', 'bidder', 'item_category', 'starting_price',
-                    'start_date', 'end_date']
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ['last_name', 'email', 'username', 'password']
