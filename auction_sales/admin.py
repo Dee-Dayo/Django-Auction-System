@@ -13,3 +13,9 @@ class ItemAdmin(admin.ModelAdmin):
 class Bid(admin.ModelAdmin):
     list_display = ['id', 'item_name', 'bidder', 'item_category', 'starting_price',
                     'start_date', 'end_date']
+
+
+@admin.register(Bid)
+class Bid(admin.ModelAdmin):
+    list_display = ['id', 'item_name', 'bidder', 'item_category', 'starting_price',
+                    'start_date', 'end_date']
