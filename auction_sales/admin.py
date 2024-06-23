@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Item, Bid
+from .models import Item
+from .models import User
 
 
 # Register your models here.
