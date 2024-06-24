@@ -55,7 +55,7 @@ class Admin(models.Model):
 class Bid(models.Model):
     id = models.AutoField(primary_key=True)
     item_name = models.CharField(max_length=100)
-    bidder = models.CharField(max_length=100)
+    bidder = models.CharField(max_length=180, null=False, blank=False)
     ITEM_CATEGORY = [
         ('F', 'FURNITURE'),
         ('E', 'ELECTRONICS'),
@@ -71,4 +71,3 @@ class Bid(models.Model):
     starting_price = models.DecimalField(max_digits=10, decimal_places=2)
     start_date = models.DateTimeField(auto_now_add=True)
     end_date = models.DateTimeField(auto_now_add=True)
-    bidder_name = models.CharField(max_length=180, blank=False, null=False)
