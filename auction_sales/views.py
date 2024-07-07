@@ -1,24 +1,24 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views import generic
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
 
 from .models import Item, Bid
-from .serializers import ItemSerializer, BidSerializer
+from .serializers import ItemSerializer
+from .form import CustomUserCreationForm
 
 
 # Create your views here.
 
-
-@api_view()
-def list_items(request):
-    items = Item.objects.all()
-    serializer = ItemSerializer(items, many=True)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+class ItemViewSet(ModelViewSet):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
 
 
-@api_view()
-def list_bids(request):
-    bids = Bid.objects.all()
-    serializer = BidSerializer(bids, many=True)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+class SignUpView(generic.CreateView):
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'registration/signup.html'
